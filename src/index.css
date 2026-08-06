@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 transition-colors duration-300;
+  }
+
+  html.dark body {
+    @apply bg-pilot-bg text-slate-100;
+  }
+
+  ::selection {
+    @apply bg-teal-400/30;
+  }
+
+  /* Visible keyboard focus for accessibility (FR: sufficient contrast / keyboard nav) */
+  :focus-visible {
+    outline: 2px solid #14b8a6;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .grid-cell {
+    @apply select-none border border-slate-200/70 dark:border-slate-800/70;
+  }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
